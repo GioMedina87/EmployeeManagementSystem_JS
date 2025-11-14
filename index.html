@@ -1,23 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Employee Management System (JavaScript)</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Employee Management System (JavaScript)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Employee Management System</h1>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="title-block">
+        <h1>Employee Management System</h1>
+        <span class="logo-tag">GioTech Tools</span>
+      </div>
+      <p class="subtitle">
+        Add, view, and manage employees right in your browser.
+      </p>
+    </header>
 
-    <div class="form-container">
-        <input type="text" id="name" placeholder="Employee name" />
-        <input type="number" id="income" placeholder="Income" />
-        <input type="number" id="id" placeholder="Employee ID" />
-        <button id="addButton">Add Employee</button>
-    </div>
+    <section class="input-section">
+      <input
+        type="text"
+        id="name-input"
+        placeholder="Employee name"
+        autocomplete="off"
+      />
+      <input
+        type="number"
+        id="income-input"
+        placeholder="Income"
+        autocomplete="off"
+      />
+      <input
+        type="text"
+        id="id-input"
+        placeholder="Employee ID"
+        autocomplete="off"
+      />
+      <button id="add-btn">Add Employee</button>
+    </section>
 
-    <h2>Employee List</h2>
-    <div id="employeeList"></div>
+    <section class="list-section">
+      <h2>Employee List</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Employee Name</th>
+              <th>Income</th>
+              <th>Employee ID</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="employee-table-body">
+            <!-- Rows added by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- Toast notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
