@@ -7,42 +7,81 @@
 </head>
 <body>
   <div class="app-container">
+    <!-- Header -->
     <header class="app-header">
       <div class="title-block">
         <h1>Employee Management System</h1>
-        <span class="logo-tag">GioTech Tools</span>
+        <p class="subtitle">
+          Add, view, and manage employees right in your browser.
+        </p>
       </div>
-      <p class="subtitle">
-        Add, view, and manage employees right in your browser.
-      </p>
+
+      <div class="header-right">
+        <span class="badge">GioTech Tools</span>
+
+        <button id="themeToggle" class="icon-button" aria-label="Toggle theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
     </header>
 
-    <section class="input-section">
-      <input
-        type="text"
-        id="name-input"
-        placeholder="Employee name"
-        autocomplete="off"
-      />
-      <input
-        type="number"
-        id="income-input"
-        placeholder="Income"
-        autocomplete="off"
-      />
-      <input
-        type="text"
-        id="id-input"
-        placeholder="Employee ID"
-        autocomplete="off"
-      />
-      <button id="add-btn">Add Employee</button>
+    <!-- Controls -->
+    <section class="controls">
+      <div class="input-row">
+        <input
+          type="text"
+          id="employeeName"
+          placeholder="Employee name"
+          autocomplete="off"
+        />
+        <input
+          type="number"
+          id="income"
+          placeholder="Income"
+          min="0"
+        />
+        <input
+          type="text"
+          id="employeeId"
+          placeholder="Employee ID"
+          autocomplete="off"
+        />
+        <button id="addEmployeeBtn" class="primary-btn">
+          Add Employee
+        </button>
+      </div>
+
+      <div class="utility-row">
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search by name, income, or ID..."
+        />
+
+        <div class="view-toggle">
+          <button id="tableViewBtn" class="view-btn active">Table View</button>
+          <button id="cardViewBtn" class="view-btn">Card View</button>
+        </div>
+
+        <button id="exportBtn" class="secondary-btn">
+          Export CSV
+        </button>
+      </div>
     </section>
 
+    <!-- Summary -->
+    <section class="summary-bar" id="summaryBar">
+      <!-- Filled by JavaScript -->
+    </section>
+
+    <!-- List -->
     <section class="list-section">
       <h2>Employee List</h2>
-      <div class="table-wrapper">
-        <table>
+
+      <div id="employeeListWrapper">
+        <!-- Table view -->
+        <table id="employeeTable" class="employee-table">
           <thead>
             <tr>
               <th>#</th>
@@ -52,16 +91,35 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody id="employee-table-body">
-            <!-- Rows added by JavaScript -->
+          <tbody id="employeeTableBody">
+            <!-- Rows injected by JavaScript -->
           </tbody>
         </table>
+
+        <!-- Card view -->
+        <div id="employeeCards" class="cards-container hidden">
+          <!-- Cards injected by JavaScript -->
+        </div>
       </div>
     </section>
   </div>
 
-  <!-- Toast notification -->
-  <div id="toast" class="toast hidden"></div>
+  <!-- Delete confirmation modal -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Delete Employee</h3>
+      <p id="confirmMessage">
+        Are you sure you want to delete this employee?
+      </p>
+      <div class="modal-actions">
+        <button id="cancelDelete" class="secondary-btn">Cancel</button>
+        <button id="confirmDelete" class="danger-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container"></div>
 
   <script src="script.js"></script>
 </body>
